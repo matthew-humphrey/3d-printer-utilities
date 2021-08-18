@@ -21,7 +21,7 @@ class Rect:
 
 def parse_magnet_file(magnet_input_file, xorigin, yorigin, xinflate, yinflate):
     magnets = []
-    with open(magnet_input_file, newline = '') as csvfile:
+    with open(magnet_input_file) as csvfile:
         magnetreader = csv.reader(csvfile, delimiter=',')
         headerrow = True
         for row in magnetreader:
@@ -34,7 +34,7 @@ def parse_magnet_file(magnet_input_file, xorigin, yorigin, xinflate, yinflate):
 
 
 def process_svg_file(magnets, svg_output_file):
-    with open(os.path.join(sys.path[0], "steel-sheet.svg"), mode = 'r', newline = '') as svginpf :
+    with open(os.path.join(sys.path[0], "steel-sheet.svg"), mode = 'r') as svginpf :
         with open(svg_output_file, mode = 'w') as svgoutf:
             for line in svginpf:
                 if "{{MAGNET_RECTANGLES}}" in line:
